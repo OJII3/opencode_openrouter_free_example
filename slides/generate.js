@@ -29,7 +29,7 @@ const C = {
 const F = { head: "Hiragino Sans", body: "Hiragino Sans", code: "Menlo" };
 const W = 13.33;
 const MX = 0.7;
-const TOTAL = 27;
+const TOTAL = 26;
 
 const shadow = () => ({ type: "outer", color: "000000", blur: 10, offset: 3, angle: 90, opacity: 0.35 });
 
@@ -221,7 +221,7 @@ function check(slide, x, y, d) {
 {
   const s = pres.addSlide();
   bg(s);
-  header(s, "Intro", C.blue, "AIチャット、使ってますか？");
+  header(s, "Intro", C.blue, "“コピペ”の、その先へ");
   s.addText(
     [
       { text: "ChatGPT や Claude に質問 → 返ってきた答えを", options: { color: C.sub } },
@@ -329,8 +329,7 @@ function check(slide, x, y, d) {
     [
       { text: "ファイル操作もコマンド実行も、ここから全部できる", options: { bullet: { indent: 18 }, breakLine: true } },
       { text: "エージェントの“手”として一番都合がいい", options: { bullet: { indent: 18 }, breakLine: true } },
-      { text: "ボタンを探すより速く・自動で動かせる", options: { bullet: { indent: 18 }, breakLine: true } },
-      { text: "黒い画面が苦手でも大丈夫 — 今日はコピペ中心", options: { bullet: { indent: 18 } } },
+      { text: "ボタンを探すより速く・自動で動かせる", options: { bullet: { indent: 18 } } },
     ],
     { x: MX + 0.45, y: 3.2, w: 5.2, h: 2.6, fontSize: 14.5, fontFace: F.body, color: C.sub, align: "left", valign: "top", paraSpaceAfter: 12, margin: 0 }
   );
@@ -342,7 +341,7 @@ function check(slide, x, y, d) {
     { t: "# → localhost:8000 で確認", c: C.muted },
     { t: "", c: C.sub },
     { t: "$ opencode", c: C.green },
-    { t: "> ToDoアプリを分割して作って", c: C.blue },
+    { t: "> ToDoアプリを作って", c: C.blue },
     { t: "  作成中: src/app.js …", c: C.muted },
   ], { title: "こんな世界です", fontSize: 13 });
   footer(s);
@@ -549,35 +548,19 @@ function check(slide, x, y, d) {
   const s = pres.addSlide();
   bg(s);
   header(s, "Connect", C.green, "STEP 3 ── フォルダを作って起動する");
-  s.addText("作業用のフォルダを1つ作り、その中で OpenCode を起動します。", { x: MX, y: 1.95, w: W - MX * 2, h: 0.5, fontSize: 16, fontFace: F.body, color: C.sub, align: "left", valign: "middle", margin: 0 });
-  codeBlock(s, MX, 2.65, 6.0, 2.55, [
+  s.addText("作業用のフォルダを作り、その中で OpenCode を起動します。", { x: MX, y: 1.95, w: W - MX * 2, h: 0.5, fontSize: 16, fontFace: F.body, color: C.sub, align: "left", valign: "middle", margin: 0 });
+  codeBlock(s, MX, 2.75, 6.4, 2.8, [
     { t: "# 作業フォルダを作って入る", c: C.muted },
     { t: "$ mkdir todo-app", c: C.green },
     { t: "$ cd todo-app", c: C.green },
     { t: "", c: C.sub },
     { t: "# OpenCode を起動", c: C.muted },
     { t: "$ opencode", c: C.green },
-  ], { title: "フォルダ作成 → 起動", fontSize: 13.5 });
-  card(s, 6.9, 2.65, 5.7, 2.55, C.panel2);
-  s.addShape(pres.shapes.RECTANGLE, { x: 6.9, y: 2.65, w: 0.09, h: 2.55, fill: { color: C.green }, line: { type: "none" } });
-  s.addText("git は使いません", { x: 7.3, y: 2.95, w: 5, h: 0.5, fontSize: 16, fontFace: F.head, bold: true, color: C.green, align: "left", valign: "middle", margin: 0 });
-  s.addText(
-    [
-      { text: "フォルダを1つ作るだけ", options: { bullet: { indent: 18 }, breakLine: true } },
-      { text: "好きな名前でOK（例: todo-app）", options: { bullet: { indent: 18 }, breakLine: true } },
-      { text: "作ったファイルはこの中にできる", options: { bullet: { indent: 18 } } },
-    ],
-    { x: 7.3, y: 3.5, w: 5.0, h: 1.6, fontSize: 14, fontFace: F.body, color: C.sub, align: "left", valign: "top", paraSpaceAfter: 10, margin: 0 }
-  );
-  card(s, MX, 5.45, W - MX * 2, 1.0, C.panel2);
-  s.addShape(pres.shapes.RECTANGLE, { x: MX, y: 5.45, w: 0.09, h: 1.0, fill: { color: C.orange }, line: { type: "none" } });
-  s.addText(
-    [
-      { text: "command not found の時：", options: { color: C.orange, bold: true } },
-      { text: " ターミナルを一度閉じて、開き直してからもう一度 opencode を実行。", options: { color: C.sub } },
-    ],
-    { x: MX + 0.4, y: 5.45, w: W - MX * 2 - 0.7, h: 1.0, fontSize: 14.5, fontFace: F.body, align: "left", valign: "middle", margin: 0 }
-  );
+  ], { title: "フォルダ作成 → 起動", fontSize: 14.5 });
+  card(s, 7.3, 2.75, 5.3, 2.8, C.panel2);
+  s.addShape(pres.shapes.RECTANGLE, { x: 7.3, y: 2.75, w: 0.09, h: 2.8, fill: { color: C.green }, line: { type: "none" } });
+  s.addText("フォルダ名は自由", { x: 7.7, y: 3.05, w: 4.6, h: 0.5, fontSize: 16, fontFace: F.head, bold: true, color: C.green, align: "left", valign: "middle", margin: 0 });
+  s.addText("好きな名前でOK（例: todo-app）。これから作るファイルは、このフォルダの中にできていきます。", { x: 7.7, y: 3.6, w: 4.6, h: 1.7, fontSize: 14.5, fontFace: F.body, color: C.sub, align: "left", valign: "top", lineSpacingMultiple: 1.4, margin: 0 });
   footer(s);
 }
 
@@ -593,25 +576,25 @@ function check(slide, x, y, d) {
     { t: "OpenRouter を選ぶ", d: "provider 一覧から選択" },
     { t: "API キーを貼る", d: "STEP 2 で控えたキーを貼り付け" },
   ];
-  const y0 = 2.15, rh = 1.15, gap = 0.15;
+  const y0 = 2.25, rh = 1.25, gap = 0.2;
   steps.forEach((st, i) => {
     const y = y0 + i * (rh + gap);
     card(s, MX, y, 6.6, rh);
     badge(s, MX + 0.32, y + (rh - 0.6) / 2, 0.6, i + 1, C.green);
-    s.addText(st.t, { x: MX + 1.2, y: y + 0.18, w: 5.2, h: 0.45, fontSize: 17, fontFace: F.head, bold: true, color: C.text, align: "left", valign: "middle", margin: 0 });
-    s.addText(st.d, { x: MX + 1.2, y: y + 0.62, w: 5.2, h: 0.4, fontSize: 13, fontFace: F.body, color: C.muted, align: "left", valign: "middle", margin: 0 });
+    s.addText(st.t, { x: MX + 1.2, y: y + 0.22, w: 5.2, h: 0.45, fontSize: 17, fontFace: F.head, bold: true, color: C.text, align: "left", valign: "middle", margin: 0 });
+    s.addText(st.d, { x: MX + 1.2, y: y + 0.66, w: 5.2, h: 0.4, fontSize: 13, fontFace: F.body, color: C.muted, align: "left", valign: "middle", margin: 0 });
   });
-  codeBlock(s, 7.7, 2.15, 4.9, 2.0, [
+  codeBlock(s, 7.7, 2.25, 4.9, 4.2, [
     { t: "> /connect", c: C.green },
+    { t: "", c: C.sub },
     { t: "  ? Provider", c: C.muted },
     { t: "  > OpenRouter", c: C.blue },
+    { t: "", c: C.sub },
     { t: "  ? API Key", c: C.muted },
     { t: "  > sk-or-••••••••", c: C.sub },
-  ], { title: "入力イメージ", fontSize: 12.5 });
-  card(s, 7.7, 4.4, 4.9, 1.9, C.panel2);
-  s.addShape(pres.shapes.RECTANGLE, { x: 7.7, y: 4.4, w: 0.09, h: 1.9, fill: { color: C.green }, line: { type: "none" } });
-  s.addText("キーは OpenCode 側に保存される", { x: 8.1, y: 4.65, w: 4.3, h: 0.5, fontSize: 14.5, fontFace: F.head, bold: true, color: C.green, align: "left", valign: "middle", margin: 0 });
-  s.addText("環境変数を自分で設定する必要はありません。一度つなげば次回からは不要です。", { x: 8.1, y: 5.15, w: 4.3, h: 1.0, fontSize: 13, fontFace: F.body, color: C.sub, align: "left", valign: "top", lineSpacingMultiple: 1.3, margin: 0 });
+    { t: "", c: C.sub },
+    { t: "  ✓ 接続しました", c: C.green },
+  ], { title: "入力イメージ", fontSize: 13 });
   footer(s);
 }
 
@@ -630,17 +613,14 @@ function check(slide, x, y, d) {
     ],
     { x: MX, y: 1.95, w: W - MX * 2, h: 0.5, fontSize: 16.5, fontFace: F.body, align: "left", valign: "middle", margin: 0 }
   );
-  codeBlock(s, MX, 2.65, 6.0, 2.0, [
+  codeBlock(s, MX, 2.7, 7.2, 2.1, [
     { t: "# 見つからなければ検索欄に：", c: C.muted },
     { t: "Free Models Router", c: C.green },
     { t: "# と入力して絞り込む", c: C.muted },
-  ], { title: "モデルを探す", fontSize: 13 });
-  card(s, 6.9, 2.65, 5.7, 2.0, C.panel2);
-  s.addText("なぜ Router？", { x: 7.3, y: 2.9, w: 5, h: 0.4, fontSize: 15, fontFace: F.head, bold: true, color: C.green, align: "left", valign: "middle", margin: 0 });
-  s.addText("特定の無料モデルは混雑で使えないことがある。Router は空いている無料モデルへ自動でつなぎます。", { x: 7.3, y: 3.35, w: 4.9, h: 1.2, fontSize: 13.5, fontFace: F.body, color: C.sub, align: "left", valign: "top", lineSpacingMultiple: 1.3, margin: 0 });
-  card(s, MX, 4.95, W - MX * 2, 1.45, C.panel2);
-  s.addShape(pres.shapes.RECTANGLE, { x: MX, y: 4.95, w: 0.09, h: 1.45, fill: { color: C.green }, line: { type: "none" } });
-  s.addText("動作確認", { x: MX + 0.4, y: 5.15, w: 2.2, h: 0.5, fontSize: 16, fontFace: F.head, bold: true, color: C.text, align: "left", valign: "middle", margin: 0 });
+  ], { title: "モデルを探す", fontSize: 14 });
+  card(s, MX, 5.1, W - MX * 2, 1.4, C.panel2);
+  s.addShape(pres.shapes.RECTANGLE, { x: MX, y: 5.1, w: 0.09, h: 1.4, fill: { color: C.green }, line: { type: "none" } });
+  s.addText("動作確認", { x: MX + 0.4, y: 5.3, w: 2.2, h: 0.5, fontSize: 16, fontFace: F.head, bold: true, color: C.text, align: "left", valign: "middle", margin: 0 });
   s.addText(
     [
       { text: "Reply with OK only.", options: { color: C.green, fontFace: F.code, bold: true } },
@@ -648,7 +628,7 @@ function check(slide, x, y, d) {
       { text: "OK", options: { color: C.green, bold: true, fontFace: F.code } },
       { text: " が返れば、接続成功です 🎉", options: { color: C.sub } },
     ],
-    { x: MX + 0.4, y: 5.65, w: W - MX * 2 - 0.7, h: 0.6, fontSize: 15, fontFace: F.body, align: "left", valign: "middle", margin: 0 }
+    { x: MX + 0.4, y: 5.8, w: W - MX * 2 - 0.7, h: 0.6, fontSize: 15, fontFace: F.body, align: "left", valign: "middle", margin: 0 }
   );
   footer(s);
 }
@@ -674,7 +654,7 @@ function check(slide, x, y, d) {
     s.addText(it.d, { x: MX + 0.4, y: yy + 0.64, w: 5.9, h: 0.5, fontSize: 13.5, fontFace: F.body, color: C.sub, align: "left", valign: "middle", margin: 0 });
   });
   codeBlock(s, 7.6, 2.15, 5.0, 4.27, [
-    { t: "> ToDoアプリを分割して作って", c: C.blue },
+    { t: "> ToDoアプリを作って", c: C.blue },
     { t: "", c: C.sub },
     { t: "  ● 作成中", c: C.green },
     { t: "  + index.html", c: C.green },
@@ -694,7 +674,7 @@ function check(slide, x, y, d) {
 {
   const s = pres.addSlide();
   bg(s);
-  header(s, "Build", C.orange, "STEP 6 ── ToDoアプリを “分割して” 作る");
+  header(s, "Build", C.orange, "STEP 6 ── ToDoアプリを作る");
   codeBlock(s, MX, 2.1, 6.2, 4.25, [
     { t: "todo-app/", c: C.muted },
     { t: "  index.html     画面", c: C.sub },
@@ -703,7 +683,7 @@ function check(slide, x, y, d) {
     { t: "    storage.js   保存（localStorage）", c: C.sub },
     { t: "    todo.js      追加・完了・削除", c: C.sub },
     { t: "    app.js       画面とロジックの入口", c: C.sub },
-  ], { title: "ファイル構成（ES Modules）", fontSize: 14 });
+  ], { title: "エージェントが作る構成（例）", fontSize: 14 });
   const feats = [
     { t: "タスクを追加", d: "入力して「追加」で登録", c: C.green },
     { t: "完了でチェック", d: "押すと打ち消し線が付く", c: C.blue },
@@ -718,7 +698,7 @@ function check(slide, x, y, d) {
     s.addText(f.t, { x: fx + 0.4, y: fy + 0.1, w: fw - 0.7, h: 0.4, fontSize: 16, fontFace: F.head, bold: true, color: C.text, align: "left", valign: "middle", margin: 0 });
     s.addText(f.d, { x: fx + 0.4, y: fy + 0.48, w: fw - 0.7, h: 0.32, fontSize: 12.5, fontFace: F.body, color: C.muted, align: "left", valign: "middle", margin: 0 });
   });
-  s.addText("分け方も“どう動くか”も、まとめてエージェントにお任せできます。", { x: fx, y: 6.05, w: fw, h: 0.3, fontSize: 12.5, fontFace: F.body, color: C.green, align: "left", valign: "middle", margin: 0 });
+  s.addText("どう分けるかも、まとめてエージェントが考えてくれます。", { x: fx, y: 6.05, w: fw, h: 0.3, fontSize: 12.5, fontFace: F.body, color: C.green, align: "left", valign: "middle", margin: 0 });
   footer(s);
 }
 
@@ -728,30 +708,24 @@ function check(slide, x, y, d) {
 {
   const s = pres.addSlide();
   bg(s);
-  header(s, "Build", C.orange, "“分割して” と頼む");
-  s.addText("ファイル構成と役割を伝えるのがコツ。あとはエージェントが一気に作ります。", { x: MX, y: 1.95, w: W - MX * 2, h: 0.5, fontSize: 16, fontFace: F.body, color: C.sub, align: "left", valign: "middle", margin: 0 });
-  codeBlock(s, MX, 2.65, W - MX * 2, 2.95, [
-    { t: "ToDoアプリを作って。ES Modules で次のように分割して：", c: C.text },
-    { t: "  index.html      … 画面", c: C.sub },
-    { t: "  styles.css      … 見た目", c: C.sub },
-    { t: "  src/storage.js  … localStorage への保存", c: C.sub },
-    { t: "  src/todo.js     … 追加・完了・削除のロジック", c: C.sub },
-    { t: "  src/app.js      … 画面とロジックをつなぐ入口", c: C.sub },
-    { t: "タスクの追加・完了チェック・削除ができて、", c: C.text },
-    { t: "リロードしても残るようにして。", c: C.text },
-  ], { title: "OpenCode に貼り付ける指示", fontSize: 14 });
-  const tips = [
-    { t: "ファイル構成を書く", d: "どんなファイルに分けるか" },
-    { t: "役割を一言ずつ", d: "各ファイルが何を担当するか" },
-    { t: "「ES Modules で」", d: "import / export で分割と伝える" },
-  ];
-  const cw = 3.7, gap = 0.42, y = 5.85, ch = 0.95;
-  tips.forEach((it, i) => {
-    const x = MX + i * (cw + gap);
-    card(s, x, y, cw, ch);
-    s.addText(it.t, { x: x + 0.35, y: y + 0.12, w: cw - 0.7, h: 0.42, fontSize: 15, fontFace: F.head, bold: true, color: C.orange, align: "left", valign: "middle", margin: 0 });
-    s.addText(it.d, { x: x + 0.35, y: y + 0.5, w: cw - 0.7, h: 0.35, fontSize: 12, fontFace: F.body, color: C.muted, align: "left", valign: "middle", margin: 0 });
-  });
+  header(s, "Build", C.orange, "プロンプトはシンプルでいい");
+  s.addText("「作りたいもの」と「こうなってほしい」を伝えるだけ。作り方はエージェントが考えます。", { x: MX, y: 1.95, w: W - MX * 2, h: 0.5, fontSize: 16, fontFace: F.body, color: C.sub, align: "left", valign: "middle", margin: 0 });
+  codeBlock(s, MX, 2.7, W - MX * 2, 2.75, [
+    { t: "ToDoアプリを作って。", c: C.text },
+    { t: "・タスクの追加・完了チェック・削除ができる", c: C.sub },
+    { t: "・閉じても内容が残るようにする", c: C.sub },
+    { t: "・コードは役割ごとに複数のファイルに分ける", c: C.sub },
+    { t: "・見た目もシンプルに整える", c: C.sub },
+  ], { title: "OpenCode に貼り付ける指示", fontSize: 15 });
+  card(s, MX, 5.65, W - MX * 2, 0.95, C.panel2);
+  s.addShape(pres.shapes.RECTANGLE, { x: MX, y: 5.65, w: 0.09, h: 0.95, fill: { color: C.orange }, line: { type: "none" } });
+  s.addText(
+    [
+      { text: "ファイル名や分け方までは指定しなくてOK。", options: { color: C.text, bold: true } },
+      { text: " どう作るかはエージェントが判断します。", options: { color: C.sub } },
+    ],
+    { x: MX + 0.4, y: 5.65, w: W - MX * 2 - 0.7, h: 0.95, fontSize: 15, fontFace: F.body, align: "left", valign: "middle", margin: 0 }
+  );
   footer(s);
 }
 
@@ -810,33 +784,7 @@ function check(slide, x, y, d) {
 }
 
 // ============================================================
-// 21. うまくいかない時
-// ============================================================
-{
-  const s = pres.addSlide();
-  bg(s);
-  header(s, "Build", C.orange, "うまくいかない時のコツ");
-  s.addText("無料・軽量モデルでも、頼み方を工夫すると安定します。", { x: MX, y: 1.95, w: W - MX * 2, h: 0.5, fontSize: 16, fontFace: F.body, color: C.sub, align: "left", valign: "middle", margin: 0 });
-  const tips = [
-    { t: "小さく分けて頼む", d: "一度に全部より、機能ごとに少しずつ。", c: C.green },
-    { t: "具体的に書く", d: "何を・どんな見た目か、はっきり伝える。", c: C.blue },
-    { t: "エラーは貼って渡す", d: "出たメッセージをそのまま貼り「直して」。", c: C.purple },
-    { t: "もう一度送る", d: "Router が別の無料モデルに切り替わることも。", c: C.orange },
-  ];
-  const cw = 5.8, gap = 0.33, ch = 1.7, y0 = 2.6, gy = 0.25;
-  tips.forEach((it, i) => {
-    const x = MX + (i % 2) * (cw + gap);
-    const y = y0 + Math.floor(i / 2) * (ch + gy);
-    card(s, x, y, cw, ch);
-    s.addShape(pres.shapes.RECTANGLE, { x, y, w: 0.09, h: ch, fill: { color: it.c }, line: { type: "none" } });
-    s.addText(it.t, { x: x + 0.4, y: y + 0.28, w: cw - 0.7, h: 0.5, fontSize: 17, fontFace: F.head, bold: true, color: it.c, align: "left", valign: "middle", margin: 0 });
-    s.addText(it.d, { x: x + 0.4, y: y + 0.82, w: cw - 0.7, h: 0.75, fontSize: 14, fontFace: F.body, color: C.sub, align: "left", valign: "top", lineSpacingMultiple: 1.25, margin: 0 });
-  });
-  footer(s);
-}
-
-// ============================================================
-// 22. 指示ファイル (AGENTS.md / CLAUDE.md)
+// 21. 指示ファイル (AGENTS.md / CLAUDE.md)
 // ============================================================
 {
   const s = pres.addSlide();
