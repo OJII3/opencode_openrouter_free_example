@@ -660,10 +660,11 @@ function check(slide, x, y, d) {
     { t: "", c: C.sub },
     { t: "  ● 作成中", c: C.green },
     { t: "  + index.html", c: C.green },
+    { t: "  + style.css", c: C.green },
+    { t: "  + script.js", c: C.green },
     { t: "  ✓ ブラウザで表示確認", c: C.green },
-    { t: "  ✓ 追加・完了・削除を確認", c: C.green },
     { t: "", c: C.sub },
-    { t: "  ✓ 1ファイル作成", c: C.green },
+    { t: "  ✓ 追加・完了・削除を確認", c: C.green },
   ], { title: "やりとりの例", fontSize: 12.5 });
   footer(s);
 }
@@ -680,7 +681,7 @@ function check(slide, x, y, d) {
     { t: "追加・完了・削除", d: "基本操作がその場で試せる", c: C.green },
     { t: "件数が見える", d: "残り件数と完了件数を表示", c: C.blue },
     { t: "閉じても残る", d: "localStorage に保存", c: C.purple },
-    { t: "1ファイルで完結", d: "index.html だけで配布しやすい", c: C.orange },
+    { t: "役割ごとに分ける", d: "画面・見た目・動きを読みやすく", c: C.orange },
   ];
   const fx = MX, fw = 5.0, fy0 = 2.65, fh = 0.82, fgap = 0.14;
   feats.forEach((f, i) => {
@@ -705,9 +706,8 @@ function check(slide, x, y, d) {
   const s = pres.addSlide();
   bg(s);
   header(s, "Build", C.orange, "このプロンプトを貼る");
-  s.addText("完成条件まで書いておくと、無料モデルでも結果が安定します。", { x: MX, y: 1.83, w: W - MX * 2, h: 0.45, fontSize: 16, fontFace: F.body, color: C.sub, align: "left", valign: "middle", margin: 0 });
-  codeBlock(s, MX, 2.25, W - MX * 2, 4.25, [
-    { t: "ミニToDoアプリを index.html 1ファイルで作ってください。", c: C.text },
+  codeBlock(s, MX, 1.73, W - MX * 2, 4.48, [
+    { t: "ブラウザで動くミニToDoアプリを作ってください。", c: C.text },
     { t: "- タスクの追加、完了切り替え、削除ができる", c: C.sub },
     { t: "- 残り件数と完了件数を表示する", c: C.sub },
     { t: "- localStorage に保存し、再読み込み後も残る", c: C.sub },
@@ -715,22 +715,22 @@ function check(slide, x, y, d) {
     { t: "- スマホでもPCでも見やすいカード風の見た目", c: C.sub },
     { t: "", c: C.sub },
     { t: "実装条件:", c: C.orange },
-    { t: "- 外部ライブラリは使わない", c: C.sub },
-    { t: "- CSS は head 内の style にまとめる", c: C.sub },
-    { t: "- JS は body 末尾の script にまとめる", c: C.sub },
-    { t: "- HTML のタグが壊れていないか確認する", c: C.sub },
+    { t: "- HTML / CSS / JavaScript を役割ごとに分ける", c: C.sub },
+    { t: "- 作ったファイルと確認手順を最後に教える", c: C.sub },
     { t: "", c: C.sub },
-    { t: "最後に確認手順を1行で教えてください:", c: C.green },
-    { t: "python3 -m http.server 8000", c: C.green },
-  ], { title: "OpenCode に貼り付ける指示", fontSize: 10.3 });
-  card(s, MX, 6.42, W - MX * 2, 0.45, C.panel2);
-  s.addShape(pres.shapes.RECTANGLE, { x: MX, y: 6.42, w: 0.09, h: 0.45, fill: { color: C.orange }, line: { type: "none" } });
+    { t: "確認すること:", c: C.orange },
+    { t: "- 追加・完了切り替え・削除・再読み込み後の保存", c: C.sub },
+    { t: "python3 -m http.server 8000 で起動して確認し、", c: C.green },
+    { t: "問題があれば修正してください。", c: C.green },
+  ], { title: "OpenCode に貼り付ける指示", fontSize: 10 });
+  card(s, MX, 6.3, W - MX * 2, 0.45, C.panel2);
+  s.addShape(pres.shapes.RECTANGLE, { x: MX, y: 6.3, w: 0.09, h: 0.45, fill: { color: C.orange }, line: { type: "none" } });
   s.addText(
     [
       { text: "ポイント：", options: { color: C.text, bold: true } },
-      { text: " 何を作るかだけでなく、成功条件と確認方法まで一緒に渡す。", options: { color: C.sub } },
+      { text: " 完成条件まで書くと無料モデルでも安定。役割と成功条件を渡す。", options: { color: C.sub } },
     ],
-    { x: MX + 0.4, y: 6.42, w: W - MX * 2 - 0.7, h: 0.45, fontSize: 13, fontFace: F.body, align: "left", valign: "middle", margin: 0 }
+    { x: MX + 0.4, y: 6.3, w: W - MX * 2 - 0.7, h: 0.45, fontSize: 13, fontFace: F.body, align: "left", valign: "middle", margin: 0 }
   );
   footer(s);
 }
@@ -816,8 +816,8 @@ function check(slide, x, y, d) {
     { t: "# AGENTS.md", c: C.muted },
     { t: "## ルール", c: C.purple },
     { t: "- 返答は日本語で", c: C.sub },
-    { t: "- ハンズオンは index.html 1枚で作る", c: C.sub },
-    { t: "- 凝った依存は入れない", c: C.sub },
+    { t: "- 小さく動くものから作る", c: C.sub },
+    { t: "- まずブラウザで動作確認する", c: C.sub },
   ], { title: "書き方の例", fontSize: 13 });
   card(s, 7.4, 5.25, 5.2, 1.0, C.panel2);
   s.addShape(pres.shapes.RECTANGLE, { x: 7.4, y: 5.25, w: 0.09, h: 1.0, fill: { color: C.orange }, line: { type: "none" } });
