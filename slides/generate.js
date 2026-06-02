@@ -27,7 +27,7 @@ const C = {
   red: "FF7B72",
   yellow: "E3B341",
 };
-const F = { head: "Hiragino Sans", body: "Hiragino Sans", code: "Menlo" };
+const F = { head: "Yu Gothic", body: "Yu Gothic", code: "Consolas" };
 const W = 13.33;
 const MX = 0.7;
 const TOTAL = 26;
@@ -700,7 +700,7 @@ function check(slide, x, y, d) {
 }
 
 // ============================================================
-// 20. ToDo ミニアプリのプロンプト
+// 19. ToDo ミニアプリのプロンプト
 // ============================================================
 {
   const s = pres.addSlide();
@@ -736,7 +736,7 @@ function check(slide, x, y, d) {
 }
 
 // ============================================================
-// 21. ブラウザで確認 (ローカルサーバー)
+// 20. ブラウザで確認 (ローカルサーバー)
 // ============================================================
 {
   const s = pres.addSlide();
@@ -797,18 +797,30 @@ function check(slide, x, y, d) {
   bg(s);
   header(s, "Build", C.orange, "エージェントへの指示ファイル");
   s.addText("プロジェクトに“指示ファイル”を置くと、前提やルールを毎回伝えられます。", { x: MX, y: 1.95, w: W - MX * 2, h: 0.5, fontSize: 16.5, fontFace: F.body, color: C.sub, align: "left", valign: "middle", margin: 0 });
-  // 対応表
-  const rows = [
-    [{ text: "ツール", options: { bold: true, color: C.bg, fill: { color: C.orange }, align: "left", valign: "middle" } },
-     { text: "指示ファイル", options: { bold: true, color: C.bg, fill: { color: C.orange }, align: "left", valign: "middle" } }],
-    [{ text: "OpenCode", options: { color: C.text, fill: { color: C.panel } } }, { text: "AGENTS.md", options: { color: C.green, fill: { color: C.panel } } }],
-    [{ text: "Codex CLI", options: { color: C.text, fill: { color: C.panel2 } } }, { text: "AGENTS.md", options: { color: C.green, fill: { color: C.panel2 } } }],
-    [{ text: "Claude Code", options: { color: C.text, fill: { color: C.panel } } }, { text: "CLAUDE.md", options: { color: C.green, fill: { color: C.panel } } }],
+  const table = { x: MX, y: 2.65, w: 6.4, c1: 3.4, c2: 3.0, headerH: 0.55, rowH: 0.7 };
+  const tableRows = [
+    { tool: "OpenCode", file: "AGENTS.md", fill: C.panel },
+    { tool: "Codex CLI", file: "AGENTS.md", fill: C.panel2 },
+    { tool: "Claude Code", file: "CLAUDE.md", fill: C.panel },
   ];
-  s.addTable(rows, {
-    x: MX, y: 2.65, w: 6.4, colW: [3.4, 3.0], rowH: [0.55, 0.7, 0.7, 0.7],
-    fontFace: F.body, fontSize: 15, valign: "middle", margin: [0, 0, 0, 8],
-    border: { type: "solid", pt: 1, color: C.border },
+  s.addShape(pres.shapes.RECTANGLE, {
+    x: table.x, y: table.y, w: table.w, h: table.headerH,
+    fill: { color: C.orange }, line: { color: C.border, width: 1 },
+  });
+  s.addText("ツール", { x: table.x + 0.18, y: table.y, w: table.c1 - 0.3, h: table.headerH, fontSize: 15, fontFace: F.body, bold: true, color: C.bg, align: "left", valign: "middle", margin: 0 });
+  s.addText("指示ファイル", { x: table.x + table.c1 + 0.18, y: table.y, w: table.c2 - 0.3, h: table.headerH, fontSize: 15, fontFace: F.body, bold: true, color: C.bg, align: "left", valign: "middle", margin: 0 });
+  tableRows.forEach((row, i) => {
+    const y = table.y + table.headerH + i * table.rowH;
+    s.addShape(pres.shapes.RECTANGLE, {
+      x: table.x, y, w: table.w, h: table.rowH,
+      fill: { color: row.fill }, line: { color: C.border, width: 1 },
+    });
+    s.addShape(pres.shapes.LINE, {
+      x: table.x + table.c1, y, w: 0, h: table.rowH,
+      line: { color: C.border, width: 1 },
+    });
+    s.addText(row.tool, { x: table.x + 0.18, y, w: table.c1 - 0.3, h: table.rowH, fontSize: 15, fontFace: F.body, color: C.text, align: "left", valign: "middle", margin: 0 });
+    s.addText(row.file, { x: table.x + table.c1 + 0.18, y, w: table.c2 - 0.3, h: table.rowH, fontSize: 15, fontFace: F.body, color: C.green, align: "left", valign: "middle", margin: 0 });
   });
   s.addText("名前は違っても“前提を1度書いておく”という考え方は共通です。", { x: MX, y: 5.55, w: 6.4, h: 0.7, fontSize: 13, fontFace: F.body, color: C.muted, align: "left", valign: "top", lineSpacingMultiple: 1.3, margin: 0 });
   // 例
@@ -826,7 +838,7 @@ function check(slide, x, y, d) {
 }
 
 // ============================================================
-// 23. レート制限
+// 22. レート制限
 // ============================================================
 {
   const s = pres.addSlide();
@@ -851,7 +863,7 @@ function check(slide, x, y, d) {
 }
 
 // ============================================================
-// 24. 振り返り
+// 23. 振り返り
 // ============================================================
 {
   const s = pres.addSlide();
@@ -874,7 +886,7 @@ function check(slide, x, y, d) {
 }
 
 // ============================================================
-// 25. もっと先へ
+// 24. もっと先へ
 // ============================================================
 {
   const s = pres.addSlide();
@@ -900,7 +912,7 @@ function check(slide, x, y, d) {
 }
 
 // ============================================================
-// 26. 参考リンク
+// 25. 参考リンク
 // ============================================================
 {
   const s = pres.addSlide();
@@ -924,7 +936,7 @@ function check(slide, x, y, d) {
 }
 
 // ============================================================
-// 27. おわり
+// 26. おわり
 // ============================================================
 {
   const s = pres.addSlide();
