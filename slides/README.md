@@ -12,13 +12,13 @@ Node.js が必要です。
 ```sh
 cd slides
 npm install
-npm run build   # generate.js を実行して seminar.pptx を出力
+nr build   # generate.js を実行して seminar.pptx を出力
 ```
 
 このリポジトリは Nix を使うため、Node.js が無い場合は次でも実行できます。
 
 ```sh
-nix shell nixpkgs#nodejs_22 --command bash -c 'npm install && npm run build'
+nix shell nixpkgs#nodejs_22 --command bash -c 'npm install && nr build'
 ```
 
 ## 構成
@@ -46,4 +46,4 @@ nix shell nixpkgs#nodejs_22 --command bash -c 'npm install && npm run build'
 - TUI で「Free Models Router」を選ぶ前提なので、スライド本文には内部モデルIDを出さない（CLI で試す場合の ID は `openrouter/openrouter/free`）。
 - 無料・軽量モデルでは曖昧な指示だと構成が崩れることがあるため、ファイル名ではなく「HTML / CSS / JavaScript を役割ごとに分ける」と明示する。
 
-デザインは GitHub Dark 基調・ターミナルモチーフで統一。日本語は Hiragino Sans、コードは Menlo を前提にしているため、macOS で開くと最も綺麗に表示されます。
+デザインは GitHub Dark 基調・ターミナルモチーフで統一。日本語は Yu Gothic、コードは Consolas を指定し、Windows / macOS の PowerPoint でのフォント置換を抑える方針です。PPTX のプレビューや Keynote で崩れやすい表オブジェクトは避け、図形とテキストでレイアウトします。
